@@ -14,18 +14,18 @@ var isLongTouch = false;
 var isScrolling = false;
 var CSSARR = ["","-webkit-","-moz-","-ms-","-o-"];
 
-for(var i=0; i<index-1; i++){
-    var img = pages[i].getElementsByTagName("img")[0];
-    if(dpr >= 2){
-        img.src = img.getAttribute("data-x2");
-        pages[index-1].style.backgroundImage = "url(" + pages[index-1].getAttribute("data-x2") + ")";
-        pages[index-1].style.backgroundSize = "100%";
-    }else if(dpr <= 1.5){
-        img.src = img.getAttribute("data-x1.5");
-        pages[index-1].style.backgroundImage = "url(" + pages[index-1].getAttribute("data-x1.5") + ")";
-        pages[index-1].style.backgroundSize = "100%";
-    }
-}
+// for(var i=0; i<index-1; i++){
+//     var img = pages[i].getElementsByTagName("img")[0];
+//     if(dpr >= 2){
+//         img.src = img.getAttribute("data-x2");
+//         pages[index-1].style.backgroundImage = "url(" + pages[index-1].getAttribute("data-x2") + ")";
+//         pages[index-1].style.backgroundSize = "100%";
+//     }else if(dpr <= 1.5){
+//         img.src = img.getAttribute("data-x1.5");
+//         pages[index-1].style.backgroundImage = "url(" + pages[index-1].getAttribute("data-x1.5") + ")";
+//         pages[index-1].style.backgroundSize = "100%";
+//     }
+// }
 
 window.onload=function(){
     for(var k=0;k<pages.length;k++){
