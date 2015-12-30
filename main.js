@@ -12,7 +12,7 @@ var nowIndex = 0;
 var hArr = [];
 var isLongTouch = false;
 var isScrolling = false;
-var CSSARR = ["-webkit-","-moz-","-ms-","-o-",""];
+var CSSARR = ["","-webkit-","-moz-","-ms-","-o-"];
 
 for(var i=0; i<index-1; i++){
     var img = pages[i].getElementsByTagName("img")[0];
@@ -70,15 +70,17 @@ box.addEventListener("touchend",function(e){
     isLongTouch = false;
 })
 
+var s = "";
 function move(str){
     isLongTouch = true;
     var n = 0;
     for(var k=0;k<CSSARR.length;k++){
         if(box.style[CSSARR[k]+"transform"]){
             n = box.style[CSSARR[k]+"transform"].slice(11,-3)*1;
+            s = CSSARR[k];
+            break;
         }
     }
-    
     if(str == "next"){
         var _n = 0;
         for(var i=0;i<nowIndex;i++){
@@ -86,12 +88,14 @@ function move(str){
         }
         if(hArr[nowIndex] > h+3 && n == -_n){
             box.style["-webkit-transform"] = "translateY(" + (-_n-(hArr[nowIndex]-h)) + "px)";
+            box.style[s+"transform"] = "translateY(" + (-_n-(hArr[nowIndex]-h)) + "px)";
             isScrolling = true;
             setTimeout(function(){
                 isScrolling = false;
             },300)
         }else if(nowIndex<index-1){
             box.style["-webkit-transform"] = "translateY(" + (-_n-hArr[nowIndex]) + "px)";
+            box.style[s+"transform"] = "translateY(" + (-_n-hArr[nowIndex]) + "px)";
             nowIndex++; 
             isScrolling = true;
             setTimeout(function(){
@@ -105,12 +109,14 @@ function move(str){
         }
         if(hArr[nowIndex] > h+3 && n < -_n-(nowIndex-1>=0?hArr[nowIndex-1]:0)){
             box.style["-webkit-transform"] = "translateY(" + (n+(hArr[nowIndex]-h)) + "px)";
+            box.style[s+"transform"] = "translateY(" + (n+(hArr[nowIndex]-h)) + "px)";
             isScrolling = true;
             setTimeout(function(){
                 isScrolling = false;
             },300)
         }else if(nowIndex>0){
             box.style["-webkit-transform"] = "translateY(" + (-_n) + "px)";
+            box.style[s+"transform"] = "translateY(" + (-_n) + "px)";
             isScrolling = true;
             setTimeout(function(){
                 isScrolling = false;
@@ -132,7 +138,6 @@ for(var j=0; j<musicBTNS.length; j++){
     }
 }
 
-audio.play();
 audio.onplay = function(){
     for(var i=0; i<musicBTNS.length; i++){
         musicBTNS[i].className = "musicBTN playing"
@@ -150,15 +155,19 @@ for(var l=0;l<ipts.length-1;l++){
      ipts[l].onfocus=function(){
          if(!isKeyboard){
             isKeyboard = true;
-            var num = box.style.transform&&box.style.transform.slice(11,-3)*1;
-            box.style["-webkit-transform"] = "translateY(" + (num - 80) +"px)";
+            var num = (box.style[s+"transform"]&&box.style[s+"transform"].slice(11,-3)*1)||
+                        (box.style["-webkit-transform"]&&box.style["-webkit-transform"].slice(11,-3)*1);
+            box.style["-wekit-transform"] = "translateY(" + (num - 80) +"px)";
+            box.style[s+"transform"] = "translateY(" + (num - 80) +"px)";
          }
      }
      ipts[l].onblur=function(){
          if(isKeyboard){
             isKeyboard = false;
-            var num = box.style.transform&&box.style.transform.slice(11,-3)*1;
+            var num = (box.style[s+"transform"]&&box.style[s+"transform"].slice(11,-3)*1)||
+                        (box.style["-webkit-transform"]&&box.style["-webkit-transform"].slice(11,-3)*1);
             box.style["-webkit-transform"] = "translateY(" + (num + 80) +"px)";
+            box.style[s+"transform"] = "translateY(" + (num + 80) +"px)";
          }
      }
 }
@@ -173,7 +182,7 @@ form.onsubmit = function(e){
         company  : document.getElementById("company"),
         phone    : document.getElementById("phone")
     } 
-//    modalFrame(JSON.parse('{"code":"0","msg":"签到成功"}'));
+    modalFrame(JSON.parse('{"code":"0","msg":"签到成功"}'));
     var xhr = new XMLHttpRequest();
     xhr.open("POST",url,true);
     xhr.onreadystatechange = function(){
