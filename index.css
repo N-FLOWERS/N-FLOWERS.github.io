@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    height: 100%;
+    overflow: hidden;
+}
+body.hiddeny {
+    
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+#wrap {
+    -webkit-transition: all 300ms ease-out 0s;
+    transition: all 300ms ease-out 0s;
+}
+.page {
+    position: relative;
+}
+.page9 {
+    padding-top: 220px;
+    min-height: 569px;
+    box-sizing: border-box; 
+}
+.formBox {
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+}
+.formBox input {
+    width: 100%;
+    margin-top: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #efebe8;
+    border-radius: 7px;
+    box-shadow: inset 0px 3px 5px  #ddd5d2;
+    color: #272526;
+    font-weight: bold;
+}
+.formBox p {
+    font-size: 10px;
+    margin-top: 30px;
+    color: #454545;
+}
+.formBox #signIn {
+    margin-top: 5px;
+    width: 175px;
+    height: 33px;
+    border: none;
+    background: url(2xIMG/btn.640.jpg) no-repeat center;
+}
+
+.musicBTN {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 13px;
+    top: 5px;
+    background: url(audiopause.jpg) no-repeat center center/24px 24px;
+}
+.musicBTN.playing {
+    background: url(audioplay.jpg) no-repeat center center/24px 24px;
+    -webkit-animation: rotate 3s linear infinite;
+    animation: rotate 3s linear infinite;
+}
+@-webkit-keyframes rotate {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+}
+@keyframes rotate {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+}
+
+.mask {
+    display: none;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.5);
+    position:fixed;
+    top:0;
+}
+.modalFrame {
+    width:80%;
+    height:180px;
+    position:absolute;
+    top: 50%;
+    margin-top: -90px;
+    margin-left:10%;
+    border-radius:6px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    background-color: #FFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.modalHeader {
+    height: 45px;
+    line-height: 45px;
+    border-bottom: 1px solid #E5E5E5;
+}
+.modalHeader h4 {
+    text-indent: 1em;
+}
+.modalHeader .close {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    width: 18px;
+    border: none;
+    background-color: transparent;
+}
+.modalContent {
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.modalFooter {
+    height: 55px;
+    line-height: 55px;
+    border-top: 1px solid #E5E5E5;
+}
+.modalFooter .closeBtn {
+    padding: 6px 12px;
+    float : right;
+    margin-right: 10px;
+    margin-top: 10px;
+    border:1px solid #8C8C8C;
+    background-color: transparent;
+    color: #333;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.modalFooter .closeBtn:hover {
+    background-color: #E6E6E6;
+    border-color: #ADADAD;
+}
