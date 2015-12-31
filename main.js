@@ -14,19 +14,6 @@ var isLongTouch = false;
 var isScrolling = false;
 var CSSARR = ["","-webkit-","-moz-","-ms-","-o-"];
 
-// for(var i=0; i<index-1; i++){
-//     var img = pages[i].getElementsByTagName("img")[0];
-//     if(dpr >= 2){
-//         img.src = img.getAttribute("data-x2");
-//         pages[index-1].style.backgroundImage = "url(" + pages[index-1].getAttribute("data-x2") + ")";
-//         pages[index-1].style.backgroundSize = "100%";
-//     }else if(dpr <= 1.5){
-//         img.src = img.getAttribute("data-x1.5");
-//         pages[index-1].style.backgroundImage = "url(" + pages[index-1].getAttribute("data-x1.5") + ")";
-//         pages[index-1].style.backgroundSize = "100%";
-//     }
-// }
-
 window.onload=function(){
     for(var k=0;k<pages.length;k++){
         hArr.push(pages[k].clientHeight); 
@@ -35,14 +22,10 @@ window.onload=function(){
 
 window.onresize=function(){
     h = window.innerHeight;
-    // var _n = 0;
-    // for(var i=0;i<nowIndex;i++){
-    //     _n += hArr[i];
-    // }
-    // box.style.transform = "translateY(" + (_n) + "px)";
 }
 
 box.addEventListener("touchmove",function(e){
+    console.log(1)
     var touch = e.touches[0];
     e.preventDefault();
     if(isLongTouch || isScrolling) {
@@ -71,6 +54,7 @@ box.addEventListener("touchend",function(e){
 })
 
 var s = "";
+var arrow = document.getElementsByClassName("arrow")[0];
 function move(str){
     isLongTouch = true;
     var n = 0;
@@ -94,6 +78,9 @@ function move(str){
                 isScrolling = false;
             },300)
         }else if(nowIndex<index-1){
+            if(nowIndex >= index-2){
+                arrow.style.display = "none";
+            }
             box.style["-webkit-transform"] = "translateY(" + (-_n-hArr[nowIndex]) + "px)";
             box.style[s+"transform"] = "translateY(" + (-_n-hArr[nowIndex]) + "px)";
             nowIndex++; 
@@ -115,6 +102,9 @@ function move(str){
                 isScrolling = false;
             },300)
         }else if(nowIndex>0){
+            if(nowIndex <= index-1){
+                arrow.style.display = "block";
+            }
             box.style["-webkit-transform"] = "translateY(" + (-_n) + "px)";
             box.style[s+"transform"] = "translateY(" + (-_n) + "px)";
             isScrolling = true;
@@ -174,23 +164,33 @@ for(var l=0;l<ipts.length-1;l++){
 
 var signIn = document.getElementById("signIn");
 var form   = document.getElementById("form");
+var isQIANDAO = false;
 form.target = "rfFrame";
 form.onsubmit = function(e){
     e.preventDefault();
+    if (isQIANDAO) alert("你已签到！");
     var sendData = {
-        userName : document.getElementById("userName"),
-        company  : document.getElementById("company"),
-        phone    : document.getElementById("phone")
-    } 
+        userName : document.getElementById("username").value,
+        company  : document.getElementById("company").value,
+        phone    : document.getElementById("phone").value
+    }
+    for(var i in sendData){
+        console.log(typeof sendData[i])
+        if(sendData[i] == "" || sendData[i] == " "){
+            console.log(sendData[i])
+            alert("请完整填写签到信息");
+        }
+    }
     modalFrame(JSON.parse('{"code":"0","msg":"签到成功"}'));
     var xhr = new XMLHttpRequest();
     xhr.open("POST",url,true);
     xhr.onreadystatechange = function(){
         if(xhr.status == 200 && xhr.readyState == 4){
             var data = JSON.parse(xhr.responseText);
+            isQIANDAO = true;
             modalFrame(data);
         }else{
-             modalFrame(JSON.parse('{"code":"-1","msg":"签到失败！请重试"}'));
+            modalFrame(JSON.parse('{"code":"-1","msg":"签到失败！请重试"}'));
         }
     }
     xhr.send(JSON.stringify(sendData))
@@ -210,7 +210,6 @@ function modalFrame(data){
     
     setTimeout(function(){
         mask.style.display = "none";
-        location.reload();
     },2000)
     
     close.onclick = closeMask;
@@ -218,7 +217,6 @@ function modalFrame(data){
     
     function closeMask(){
         mask.style.display = "none";
-        location.reload();
     }
 }
 

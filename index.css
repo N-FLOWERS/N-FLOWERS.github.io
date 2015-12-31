@@ -53,7 +53,7 @@ img {
     width: 175px;
     height: 33px;
     border: none;
-    background: url(2xIMG/btn.640.jpg) no-repeat center;
+    background: url(images/btn.640.jpg) no-repeat center;
 }
 
 .musicBTN {
@@ -62,10 +62,10 @@ img {
     position: absolute;
     right: 13px;
     top: 5px;
-    background: url(audiopause.jpg) no-repeat center center/24px 24px;
+    background: url(images/audiopause.jpg) no-repeat center center/24px 24px;
 }
 .musicBTN.playing {
-    background: url(audioplay.jpg) no-repeat center center/24px 24px;
+    background: url(images/audioplay.jpg) no-repeat center center/24px 24px;
     -webkit-animation: rotate 3s linear infinite;
     -moz-animation: rotate 3s linear infinite;
     -ms-animation: rotate 3s linear infinite;
@@ -155,4 +155,46 @@ img {
 .modalFooter .closeBtn:hover {
     background-color: #E6E6E6;
     border-color: #ADADAD;
+}
+
+.arrow {
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    margin-left: -10px;
+    background: url(images/arrow.png) no-repeat;
+    background-size: 100%;
+    width: 19px;
+    height: 12px;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+    animation: start 1.5s infinite ease-in-out;
+}
+/* 箭头 */
+@-webkit-keyframes start {
+    0%,30% {
+        opacity: 0.2;
+        -webkit-transform: translate(0,-10px);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0,0);
+    }
+    100% {
+        opacity: 0.2;
+        -webkit-transform: translate(0, 5px);
+    }
+}
+@keyframes start {
+    0%,30% {
+        opacity: 0.2;
+        transform: translate(0,-10px);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+    100% {
+        opacity: 0.2;
+        transform: translate(0, 5px);
+    }
 }
