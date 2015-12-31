@@ -159,7 +159,7 @@ img {
 
 .arrow {
     position: fixed;
-    bottom: 5px;
+    bottom: 10px;
     left: 50%;
     margin-left: -10px;
     background: url(images/arrow.png) no-repeat;
@@ -173,7 +173,7 @@ img {
 @-webkit-keyframes start {
     0%,30% {
         opacity: 0.2;
-        -webkit-transform: translate(0,-10px);
+        -webkit-transform: translate(0,5px);
     }
     60% {
         opacity: 1;
@@ -181,13 +181,13 @@ img {
     }
     100% {
         opacity: 0.2;
-        -webkit-transform: translate(0, 5px);
+        -webkit-transform: translate(0, -10px);
     }
 }
 @keyframes start {
     0%,30% {
         opacity: 0.2;
-        transform: translate(0,-10px);
+        transform: translate(0,5px);
     }
     60% {
         opacity: 1;
@@ -195,6 +195,6 @@ img {
     }
     100% {
         opacity: 0.2;
-        transform: translate(0, 5px);
+        transform: translate(0, -10px);
     }
 }
