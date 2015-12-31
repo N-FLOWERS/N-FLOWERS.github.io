@@ -25,7 +25,6 @@ window.onresize=function(){
 }
 
 box.addEventListener("touchmove",function(e){
-    console.log(1)
     var touch = e.touches[0];
     e.preventDefault();
     if(isLongTouch || isScrolling) {
@@ -175,10 +174,9 @@ form.onsubmit = function(e){
         phone    : document.getElementById("phone").value
     }
     for(var i in sendData){
-        console.log(typeof sendData[i])
         if(sendData[i] == "" || sendData[i] == " "){
-            console.log(sendData[i])
             alert("请完整填写签到信息");
+            return;
         }
     }
     modalFrame(JSON.parse('{"code":"0","msg":"签到成功"}'));
@@ -195,7 +193,6 @@ form.onsubmit = function(e){
     }
     xhr.send(JSON.stringify(sendData))
 }
-
 
 function modalFrame(data){
     var close = document.getElementsByClassName("close")[0];
