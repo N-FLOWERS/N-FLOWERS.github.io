@@ -168,17 +168,23 @@ form.target = "rfFrame";
 form.onsubmit = function(e){
     e.preventDefault();
     if (isQIANDAO) alert("你已签到！");
+    
     var sendData = {
         userName : document.getElementById("username").value,
         company  : document.getElementById("company").value,
         phone    : document.getElementById("phone").value
     }
-    for(var i in sendData){
-        if(sendData[i] == "" || sendData[i] == " "){
-            alert("请完整填写签到信息");
-            return;
-        }
+    if(sendData.userName == "" || sendData.userName == " "){
+        alert("请完整填写签到信息");
+        return;
+    }else if(sendData.company == "" || sendData.company == " "){
+        alert("请完整填写签到信息");
+        return;
+    }else if(sendData.company == "" || sendData.company == " "){
+       alert("请完整填写签到信息");
+        return; 
     }
+    
     modalFrame(JSON.parse('{"code":"0","msg":"签到成功"}'));
     var xhr = new XMLHttpRequest();
     xhr.open("POST",url,true);
