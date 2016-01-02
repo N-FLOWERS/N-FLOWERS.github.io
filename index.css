@@ -1,200 +1,196 @@
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 html,body {
-    height: 100%;
-    overflow: hidden;
+	height: 100%;
+	overflow: hidden;
 }
-img {
-    max-width: 100%;
-    display: block;
+.wrap {
+	overflow: hidden;
+	height: 100%;
+	background: url(images/bg.png) no-repeat top center/100% auto;
 }
-#wrap {
-    -webkit-transition: all 300ms ease-out 0s;
-    -moz-transition: all 300ms ease-out 0s;
-    -ms-transition: all 300ms ease-out 0s;
-    -o-transition: all 300ms ease-out 0s;
-    transition: all 300ms ease-out 0s;
+.top {
+	margin: 0 auto;
+	margin-top: 25px;
+	width: 200px;
+	height: 55px;
+	background: url(images/text.png) no-repeat 0px 0px/100%;
 }
-.page {
-    position: relative;
+.top.congrats {
+	background-position: 0px -55px;
 }
-.page9 {
-    padding-top: 220px;
-    min-height: 569px;
-    box-sizing: border-box; 
+.red {
+	margin: 0 auto;
+	margin-top: 15px;
+	width: 241px;
+	height: 353px;
+	background: url(images/red.png) no-repeat 0px 0px/100%;
+	cursor: pointer;
 }
-.formBox {
-    text-align: center;
-    width: 60%;
-    margin-left: 20%;
+.red.congrats {
+	background-position: 0px -353px;
 }
-.formBox input {
-    width: 100%;
-    margin-top: 20px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
-    text-align: center;
-    border: 1px solid #efebe8;
-    border-radius: 7px;
-    box-shadow: inset 0px 3px 5px  #ddd5d2;
-    color: #272526;
-    font-weight: bold;
+.small-red {
+	position: absolute;
+	top: -40px;
+	width: 39px;
+	height: 30px;
+	background: url(images/small-red.png) no-repeat center/100%;
 }
-.formBox p {
-    font-size: 10px;
-    margin-top: 30px;
-    color: #454545;
+.message-box {
+	width: 150px;
+	height: 80px;
+	margin: 0 auto;
+	text-align: center;
 }
-.formBox #signIn {
-    margin-top: 5px;
-    width: 175px;
-    height: 33px;
-    border: none;
-    background: url(images/btn.640.jpg) no-repeat center;
+.message-box #message {
+	padding: 15px 0 5px;
+	font-size: 16px;
 }
-
-.musicBTN {
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 13px;
-    top: 5px;
-    background: url(images/audiopause.jpg) no-repeat center center/24px 24px;
+.message-box #monney {
+	color: red;
+	font-size: 30px;
+	font-weight: bold;
 }
-.musicBTN.playing {
-    background: url(images/audioplay.jpg) no-repeat center center/24px 24px;
-    -webkit-animation: rotate 3s linear infinite;
-    -moz-animation: rotate 3s linear infinite;
-    -ms-animation: rotate 3s linear infinite;
-    -o-animation: rotate 3s linear infinite;
-    animation: rotate 3s linear infinite;
-}
-@-webkit-keyframes rotate {
-    from { -webkit-transform: rotate(0deg) }
-    to { -webkit-transform: rotate(360deg) }
-}
-@-moz-keyframes rotate {
-    from { -moz-transform: rotate(0deg) }
-    to { -moz-transform: rotate(360deg) }
-}
-@-ms-keyframes rotate {
-    from { -ms-transform: rotate(0deg) }
-    to { -ms-transform: rotate(360deg) }
-}
-@-o-keyframes rotate {
-    from { -o-transform: rotate(0deg) }
-    to { -o-transform: rotate(360deg) }
-}
-@keyframes rotate {
-    from { transform: rotate(0deg) }
-    to { transform: rotate(360deg) }
+.points {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background: url(images/bg2.png) no-repeat center/100%;
 }
 
-.mask {
-    display: none;
-    width:100%;
-    height:100%;
-    background-color:rgba(0,0,0,.5);
-    position:fixed;
-    top:0;
+.shake-chunk {
+	-webkit-transform-origin: center center;
+	transform-origin: center center;
+	-webkit-animation: shake-chunk 4s ease-in-out infinite;
+	animation: shake-chunk 4s ease-in-out infinite;
 }
-.modalFrame {
-    width:80%;
-    height:180px;
-    position:absolute;
-    top: 50%;
-    margin-top: -90px;
-    margin-left:10%;
-    border-radius:6px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    background-color: #FFF;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+@-webkit-keyframes shake-chunk {
+	2% {
+		-webkit-transform:translate(5px, 2px) rotate(-12deg)
+	}
+	4% {
+		-webkit-transform:translate(-6px, 3px) rotate(1deg)
+	}
+	6% {
+		-webkit-transform:translate(3px, 6px) rotate(14deg)
+	}
+	8% {
+		-webkit-transform:translate(1px, 8px) rotate(1deg)
+	}
+	10% {
+		-webkit-transform:translate(-5px, 10px) rotate(0deg)
+	}
+	12% {
+		-webkit-transform:translate(-11px, 2px) rotate(7deg)
+	}
+	14% {
+		-webkit-transform:translate(4px, 15px) rotate(11deg)
+	}
+	16% {
+		-webkit-transform:translate(4px, -8px) rotate(15deg)
+	}
+	18% {
+		-webkit-transform:translate(-5px, 10px) rotate(1deg)
+	}
+	20% {
+		-webkit-transform:translate(-1px, 3px) rotate(15deg)
+	}
+	22% {
+		-webkit-transform:translate(-8px, 5px) rotate(-6deg)
+	}
+	24% {
+		-webkit-transform:translate(-1px, -9px) rotate(8deg)
+	}
+	26% {
+		-webkit-transform:translate(9px, 11px) rotate(-13deg)
+	}
+	28% {
+		-webkit-transform:translate(-7px, 4px) rotate(9deg)
+	}
+	30% {
+		-webkit-transform:translate(8px, 14px) rotate(9deg)
+	}
+	32% {
+		-webkit-transform:translate(-4px, 11px) rotate(-11deg)
+	}
+	34% {
+		-webkit-transform:translate(14px, 11px) rotate(-8deg)
+	}
+	36% {
+		-webkit-transform:translate(-13px, -8px) rotate(13deg)
+	}
+	38% {
+		-webkit-transform:translate(-12px, 1px) rotate(-13deg)
+	}
+	0%,40%,100% {
+		-webkit-transform:translate(0, 0) rotate(0)
+	}
 }
-.modalHeader {
-    height: 45px;
-    line-height: 45px;
-    border-bottom: 1px solid #E5E5E5;
-}
-.modalHeader h4 {
-    text-indent: 1em;
-}
-.modalHeader .close {
-    position: absolute;
-    right: 5px;
-    top: 8px;
-    width: 18px;
-    border: none;
-    background-color: transparent;
-}
-.modalContent {
-    text-align: center;
-    height: 80px;
-    line-height: 80px;
-    font-weight: bold;
-    font-size: 14px;
-}
-.modalFooter {
-    height: 55px;
-    line-height: 55px;
-    border-top: 1px solid #E5E5E5;
-}
-.modalFooter .closeBtn {
-    padding: 6px 12px;
-    float : right;
-    margin-right: 10px;
-    margin-top: 10px;
-    border:1px solid #8C8C8C;
-    background-color: transparent;
-    color: #333;
-    font-size: 14px;
-    border-radius: 4px;
-}
-.modalFooter .closeBtn:hover {
-    background-color: #E6E6E6;
-    border-color: #ADADAD;
+@keyframes shake-chunk {
+	2% {
+		transform:translate(5px, 2px) rotate(-12deg)
+	}
+	4% {
+		transform:translate(-6px, 3px) rotate(1deg)
+	}
+	6% {
+		transform:translate(3px, 6px) rotate(14deg)
+	}
+	8% {
+		transform:translate(1px, 8px) rotate(1deg)
+	}
+	10% {
+		transform:translate(-5px, 10px) rotate(0deg)
+	}
+	12% {
+		transform:translate(-11px, 2px) rotate(7deg)
+	}
+	14% {
+		transform:translate(4px, 15px) rotate(11deg)
+	}
+	16% {
+		transform:translate(4px, -8px) rotate(15deg)
+	}
+	18% {
+		transform:translate(-5px, 10px) rotate(1deg)
+	}
+	20% {
+		transform:translate(-1px, 3px) rotate(15deg)
+	}
+	22% {
+		transform:translate(-8px, 5px) rotate(-6deg)
+	}
+	24% {
+		transform:translate(-1px, -9px) rotate(8deg)
+	}
+	26% {
+		transform:translate(9px, 11px) rotate(-13deg)
+	}
+	28% {
+		transform:translate(-7px, 4px) rotate(9deg)
+	}
+	30% {
+		transform:translate(8px, 14px) rotate(9deg)
+	}
+	32% {
+		transform:translate(-4px, 11px) rotate(-11deg)
+	}
+	34% {
+		transform:translate(14px, 11px) rotate(-8deg)
+	}
+	36% {
+		transform:translate(-13px, -8px) rotate(13deg)
+	}
+	38% {
+		transform:translate(-12px, 1px) rotate(-13deg)
+	}
+	0%,40%,100% {
+		transform:translate(0, 0) rotate(0)
+	}
 }
 
-.arrow {
-    position: fixed;
-    bottom: 10px;
-    left: 50%;
-    margin-left: -10px;
-    background: url(images/arrow.png) no-repeat;
-    background-size: 100%;
-    width: 19px;
-    height: 12px;
-    -webkit-animation: start 1.5s infinite ease-in-out;
-    animation: start 1.5s infinite ease-in-out;
-}
-/* 箭头 */
-@-webkit-keyframes start {
-    0%,30% {
-        opacity: 0.2;
-        -webkit-transform: translate(0,5px);
-    }
-    60% {
-        opacity: 1;
-        -webkit-transform: translate(0,0);
-    }
-    100% {
-        opacity: 0.2;
-        -webkit-transform: translate(0, -10px);
-    }
-}
-@keyframes start {
-    0%,30% {
-        opacity: 0.2;
-        transform: translate(0,5px);
-    }
-    60% {
-        opacity: 1;
-        transform: translate(0,0);
-    }
-    100% {
-        opacity: 0.2;
-        transform: translate(0, -10px);
-    }
-}

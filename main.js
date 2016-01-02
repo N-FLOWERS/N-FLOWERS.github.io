@@ -1,227 +1,100 @@
+var smallReds   = document.getElementsByClassName("small-red");
+var red		    = document.getElementsByClassName("red")[0];
+var smallRedBox = document.getElementsByClassName("smallred-box")[0];
+var topTitle    = document.getElementsByClassName("top")[0];
+var points      = document.getElementsByClassName("points")[0];
+var messageBox  = document.getElementsByClassName("message-box")[0];
+var allOBJ      = [];	//储存所有smallRed对象；
 
-var dpr   = window.devicePixelRatio;
-var box   = document.getElementById("wrap");
-var pages = document.getElementsByClassName("page");
-var h     = window.innerHeight;
-var audio = document.getElementById("audio");
-var musicBTNS = document.getElementsByClassName("musicBTN");
-var x;
-var y;
-var index = pages.length;
-var nowIndex = 0;
-var hArr = [];
-var isLongTouch = false;
-var isScrolling = false;
-var CSSARR = ["","-webkit-","-moz-","-ms-","-o-"];
-
-window.onload=function(){
-    for(var k=0;k<pages.length;k++){
-        hArr.push(pages[k].clientHeight); 
-    }
-    box.addEventListener("touchmove",function(e){
-        var touch = e.touches[0];
-        e.preventDefault();
-        if(isLongTouch || isScrolling) {
-            return;
-        }
-        var newX = touch.pageX;
-        var newY = touch.pageY;
-        var diffx = newX - x;
-        var diffy = newY - y;
-        if(Math.abs(diffy) < Math.abs(diffx) || Math.abs(diffy) < 30) return;
-        if(diffy > 0){
-            move("prev");
-        }else if(diffy < 0){
-            move("next");
-        }
-    })
-
-    box.addEventListener("touchstart",function(e){
-        var touch = e.touches[0];
-        x = touch.pageX;
-        y = touch.pageY;
-    })
-
-    box.addEventListener("touchend",function(e){
-        isLongTouch = false;
-    })
+function SmallRed(ele,delay){
+	this.ele = ele;
+	this.delay = delay;
 }
 
-window.onresize=function(){
-    h = window.innerHeight;
+SmallRed.prototype.init = function(){
+	var ele = this.ele;
+	this.top = -40;
+	this.position = Math.random()*70 - 15 ;
+	this.direction = ["left","right"][Math.round(Math.random())];
+	var n = this.direction == "left" ? -1 : 1;
+	this.angel = n * Math.round(Math.random()*45) + "deg";
+	this.duration = 20;
+	this.scale = Math.random()*0.3 + 0.7;
+
+	ele.style.left = "auto";
+	ele.style.right = "auto";
+	ele.style["-webkit-transform"] = "rotate(" + this.angel + ")";
+	ele.style["transform"] = "rotate(" + this.angel +")";
+	ele.style["-webkit-transform"] += "scale(" + this.scale + ")";
+	ele.style["transform"] += "scale(" + this.scale + ")";
+	ele.style[this.direction] = this.position + "px";
+	this.start();
 }
 
-var s = "";
-var arrow = document.getElementsByClassName("arrow")[0];
-function move(str){
-    isLongTouch = true;
-    var n = 0;
-    for(var k=0;k<CSSARR.length;k++){
-        if(box.style[CSSARR[k]+"transform"]){
-            n = box.style[CSSARR[k]+"transform"].slice(11,-3)*1;
-            s = CSSARR[k];
-            break;
-        }
-    }
-    if(str == "next"){
-        var _n = 0;
-        for(var i=0;i<nowIndex;i++){
-            _n += hArr[i];
-        }
-        if(hArr[nowIndex] > h+3 && n == -_n){
-            box.style["-webkit-transform"] = "translateY(" + (-_n-(hArr[nowIndex]-h)) + "px)";
-            box.style[s+"transform"] = "translateY(" + (-_n-(hArr[nowIndex]-h)) + "px)";
-            isScrolling = true;
-            setTimeout(function(){
-                isScrolling = false;
-            },300)
-        }else if(nowIndex<index-1){
-            if(nowIndex >= index-2){
-                arrow.style.display = "none";
-            }
-            box.style["-webkit-transform"] = "translateY(" + (-_n-hArr[nowIndex]) + "px)";
-            box.style[s+"transform"] = "translateY(" + (-_n-hArr[nowIndex]) + "px)";
-            nowIndex++; 
-            isScrolling = true;
-            setTimeout(function(){
-                isScrolling = false;
-            },300) 
-        }    
-    }else if(str == "prev"){
-        var _n = 0;
-        for(var i=0;i<nowIndex-1;i++){
-            _n += hArr[i];
-        }
-        if(hArr[nowIndex] > h+3 && n < -_n-(nowIndex-1>=0?hArr[nowIndex-1]:0)){
-            box.style["-webkit-transform"] = "translateY(" + (n+(hArr[nowIndex]-h)) + "px)";
-            box.style[s+"transform"] = "translateY(" + (n+(hArr[nowIndex]-h)) + "px)";
-            isScrolling = true;
-            setTimeout(function(){
-                isScrolling = false;
-            },300)
-        }else if(nowIndex>0){
-            if(nowIndex <= index-1){
-                arrow.style.display = "block";
-            }
-            box.style["-webkit-transform"] = "translateY(" + (-_n) + "px)";
-            box.style[s+"transform"] = "translateY(" + (-_n) + "px)";
-            isScrolling = true;
-            setTimeout(function(){
-                isScrolling = false;
-            },300)
-            nowIndex--;
-        }  
-    }
+SmallRed.prototype.start = function(){
+	var that = this;
+	that.timer1 = setTimeout(function(){
+		that.timer2 = setInterval(function(){
+			if(that.top >= window.innerHeight){
+				clearInterval(that.timer2);
+				that.init();
+				return;
+			}
+			that.top += 7;
+			that.ele.style.top = that.top + "px";
+		},that.duration)
+	},that.delay)
 }
 
-for(var j=0; j<musicBTNS.length; j++){
-    musicBTNS[j].onclick=function(){
-        if(this.className == "musicBTN"){
-            this.className = "musicBTN playing";
-            audio.play();
-        }else if(this.className == "musicBTN playing"){
-            this.className = "musicBTN";
-            audio.pause();
-        }
-    }
+for(var i=0; i<smallReds.length; i++){
+	var o = new SmallRed(smallReds[i],(1*i+0.5)*1000);
+	o.init();
+	allOBJ.push(o);
 }
 
-audio.onplay = function(){
-    for(var i=0; i<musicBTNS.length; i++){
-        musicBTNS[i].className = "musicBTN playing"
-    }
-}
-audio.onpause = function(){
-    for(var i=0; i<musicBTNS.length; i++){
-        musicBTNS[i].className = "musicBTN"
-    }
-}
+red.addEventListener("click",openRed,false);
 
-var isKeyboard = false;
-var ipts = document.getElementsByClassName("formBox")[0].getElementsByTagName("input");
-for(var l=0;l<ipts.length-1;l++){
-     ipts[l].onfocus=function(){
-         if(!isKeyboard){
-            isKeyboard = true;
-            var num = (box.style[s+"transform"]&&box.style[s+"transform"].slice(11,-3)*1)||
-                        (box.style["-webkit-transform"]&&box.style["-webkit-transform"].slice(11,-3)*1);
-            box.style["-wekit-transform"] = "translateY(" + (num - 80) +"px)";
-            box.style[s+"transform"] = "translateY(" + (num - 80) +"px)";
-         }
-     }
-     ipts[l].onblur=function(){
-         if(isKeyboard){
-            isKeyboard = false;
-            var num = (box.style[s+"transform"]&&box.style[s+"transform"].slice(11,-3)*1)||
-                        (box.style["-webkit-transform"]&&box.style["-webkit-transform"].slice(11,-3)*1);
-            box.style["-webkit-transform"] = "translateY(" + (num + 80) +"px)";
-            box.style[s+"transform"] = "translateY(" + (num + 80) +"px)";
-         }
-     }
+function openRed(){
+	red.className += " shake-chunk";
+	var time = new Date();
+	
+	// var xhr = new XMLHttpRequest();
+	// xhr.open("POST",url,true);
+	// xhr.onreadystatechange = function(){
+	// 	if(xhr.status == 200 && xhr.readyState == 4){
+	// 		var diffTime = new Date() - time;
+	// 		if(diffTime >= 2000){
+	// 			changeBg(JSON.parse(xhr.responseText));
+	// 		}else if(diffTime < 2000){
+	// 			setTimeout(function(){
+	// 				changeBg(JSON.parse(xhr.responseText));
+	// 			},2000-diffTime)
+	// 		}
+	// 	}else{
+	// 		alert("失败！")
+	// 	}
+	// }
+	// xhr.send();
+
+	setTimeout(function(){
+		red.className = red.className.replace(/shake-chunk/,"");
+		changeBg({code:0,sum:"¥50元",message:"恭喜你领到"})
+	},2000)
 }
 
-var signIn = document.getElementById("signIn");
-var form   = document.getElementById("form");
-var isQIANDAO = false;
-form.target = "rfFrame";
-form.onsubmit = function(e){
-    e.preventDefault();
-    if (isQIANDAO) alert("你已签到！");
-    
-    var sendData = {
-        userName : document.getElementById("username").value,
-        company  : document.getElementById("company").value,
-        phone    : document.getElementById("phone").value
-    }
-    if(sendData.userName == "" || sendData.userName == " "){
-        alert("请完整填写签到信息");
-        return;
-    }else if(sendData.company == "" || sendData.company == " "){
-        alert("请完整填写签到信息");
-        return;
-    }else if(sendData.company == "" || sendData.company == " "){
-       alert("请完整填写签到信息");
-        return; 
-    }
-    
-    modalFrame(JSON.parse('{"code":"0","msg":"签到成功"}'));
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST",url,true);
-    xhr.onreadystatechange = function(){
-        if(xhr.status == 200 && xhr.readyState == 4){
-            var data = JSON.parse(xhr.responseText);
-            isQIANDAO = true;
-            modalFrame(data);
-        }else{
-            modalFrame(JSON.parse('{"code":"-1","msg":"签到失败！请重试"}'));
-        }
-    }
-    xhr.send(JSON.stringify(sendData))
+function changeBg(data){
+	//假设返回数据中code-0表示成功，sum表示金额，message表示提示语
+	if(data.code === 0 && data.sum && data.message){
+		for(var i=0; i<allOBJ.length; i++){
+			clearInterval(allOBJ[i].timer1);
+			clearTimeout(allOBJ[i].timer2)
+		}
+		smallRedBox.style.display = "none";
+		red.className += " congrats";
+		topTitle.className += " congrats";
+		points.style.display = "block";
+		document.getElementById("message").textContent = data.message;
+		document.getElementById("monney").textContent = data.sum;
+		red.removeEventListener("click",openRed);
+	}
 }
-
-function modalFrame(data){
-    var close = document.getElementsByClassName("close")[0];
-    var closeBtn = document.getElementsByClassName("closeBtn")[0];
-    var mask = document.getElementsByClassName("mask")[0];
-    var modalContent = document.getElementsByClassName("modalContent")[0];
-    var modal = document.getElementsByClassName("modalFrame")[0];
-    
-    mask.style.display = "block";
-    modalContent.innerHTML = data.msg;
-    modalContent.style.color = data.code==0 ? "green" : "red";
-    
-    setTimeout(function(){
-        mask.style.display = "none";
-    },2000)
-    
-    close.onclick = closeMask;
-    closeBtn.onclick = closeMask;
-    
-    function closeMask(){
-        mask.style.display = "none";
-    }
-}
-
-
-
-
