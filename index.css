@@ -8,6 +8,7 @@ html,body {
 }
 .wrap {
 	overflow: hidden;
+	position: relative;
 	height: 100%;
 	background: url(images/bg.png) no-repeat top center/100% auto;
 }
