@@ -46,10 +46,12 @@ SmallRed.prototype.start = function(){
 	},that.delay)
 }
 
-for(var i=0; i<smallReds.length; i++){
-	var o = new SmallRed(smallReds[i],(1*i+0.5)*1000);
-	o.init();
-	allOBJ.push(o);
+window.onload = function(){
+	for(var i=0; i<smallReds.length; i++){
+		var o = new SmallRed(smallReds[i],(1*i+0.5)*1000);
+		o.init();
+		allOBJ.push(o);
+	}
 }
 
 red.addEventListener("click",openRed,false);
