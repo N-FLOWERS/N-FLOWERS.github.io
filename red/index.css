@@ -64,8 +64,72 @@ html,body {
 }
 
 .shake-chunk {
+	-webkit-transform-origin: center center;
 	transform-origin: center center;
-	animation: shake-chunk 4s ease-in-out infinite
+	-webkit-animation: shake-chunk 4s ease-in-out infinite;
+	animation: shake-chunk 4s ease-in-out infinite;
+}
+@-webkit-keyframes shake-chunk {
+	2% {
+		-webkit-transform:translate(5px, 2px) rotate(-12deg)
+	}
+	4% {
+		-webkit-transform:translate(-6px, 3px) rotate(1deg)
+	}
+	6% {
+		-webkit-transform:translate(3px, 6px) rotate(14deg)
+	}
+	8% {
+		-webkit-transform:translate(1px, 8px) rotate(1deg)
+	}
+	10% {
+		-webkit-transform:translate(-5px, 10px) rotate(0deg)
+	}
+	12% {
+		-webkit-transform:translate(-11px, 2px) rotate(7deg)
+	}
+	14% {
+		-webkit-transform:translate(4px, 15px) rotate(11deg)
+	}
+	16% {
+		-webkit-transform:translate(4px, -8px) rotate(15deg)
+	}
+	18% {
+		-webkit-transform:translate(-5px, 10px) rotate(1deg)
+	}
+	20% {
+		-webkit-transform:translate(-1px, 3px) rotate(15deg)
+	}
+	22% {
+		-webkit-transform:translate(-8px, 5px) rotate(-6deg)
+	}
+	24% {
+		-webkit-transform:translate(-1px, -9px) rotate(8deg)
+	}
+	26% {
+		-webkit-transform:translate(9px, 11px) rotate(-13deg)
+	}
+	28% {
+		-webkit-transform:translate(-7px, 4px) rotate(9deg)
+	}
+	30% {
+		-webkit-transform:translate(8px, 14px) rotate(9deg)
+	}
+	32% {
+		-webkit-transform:translate(-4px, 11px) rotate(-11deg)
+	}
+	34% {
+		-webkit-transform:translate(14px, 11px) rotate(-8deg)
+	}
+	36% {
+		-webkit-transform:translate(-13px, -8px) rotate(13deg)
+	}
+	38% {
+		-webkit-transform:translate(-12px, 1px) rotate(-13deg)
+	}
+	0%,40%,100% {
+		-webkit-transform:translate(0, 0) rotate(0)
+	}
 }
 @keyframes shake-chunk {
 	2% {
