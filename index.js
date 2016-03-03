@@ -4,9 +4,12 @@
     var $figure2 = $("#figure2");
     var $figure3 = $("#figure3");
     
-    $figure1.parent(".figurebox").height($figure1.height());
-    $figure2.parent(".figurebox").height($figure2.height());
-    $figure3.parent(".figurebox").height($figure3.height());
+    $(function(){
+       $figure1.parent(".figurebox").height($figure1.height());
+        $figure2.parent(".figurebox").height($figure2.height());
+        $figure3.parent(".figurebox").height($figure3.height()); 
+    })
+    
     
     var index1 = $("#figure1 li").length;
     var nowIndex1 = 0;
@@ -24,9 +27,11 @@
     }).on("touchend",function(e){
         timer1 = setInterval(move1,2000);
     }).on("swipeLeft",function(e){
+        e.preventDefault();
         alert("swipeLeft");
         move1(nowIndex1+1);
     }).on("swipeRight",function(e){
+         e.preventDefault();
         move1(nowIndex1-1);
     });
     $figure2.on("touchstart",function(e){
