@@ -33,6 +33,7 @@
     myTouch1.on("swipeStart",function(e){
         clearInterval(timer1);
     }).on("swipeEnd",function(e){
+        alert(3);
         timer1 = setInterval(move1,2000);
     }).on("swipeLeft",function(e){
         move1(nowIndex1+1);
@@ -59,8 +60,6 @@
     });
 
     function move1(i){
-        alert(3);
-
         nowIndex1 ++;
         if(nowIndex1 >= index1) nowIndex1 = 0;
         if(typeof i == "number") nowIndex1 = (i >= index1) ? 0 : ((i <= -1) ? index1-1 : i);
