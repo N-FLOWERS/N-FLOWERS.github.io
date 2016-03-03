@@ -7,7 +7,7 @@
     $figure1.parent(".figurebox").height($figure1.height());
     $figure2.parent(".figurebox").height($figure2.height());
     $figure3.parent(".figurebox").height($figure3.height());
-    alert(document.getElementById("figure1").clientHeight,$figure1.height())
+    alert(document.getElementById("figure1").clientHeight+'height()'+$figure1.height())
     
     var index1 = $("#figure1 li").length;
     var nowIndex1 = 0;
@@ -49,6 +49,7 @@
     });
 
     function move1(i){
+        alert("swipeLeft");
         nowIndex1 ++;
         if(nowIndex1 >= index1) nowIndex1 = 0;
         if(typeof i == "number") nowIndex1 = (i >= index1) ? 0 : ((i <= -1) ? index1-1 : i);
@@ -76,7 +77,6 @@
     var bandsnowIndex = 0;
     var n = 4;
     $bands.on("swipeLeft",function(e){
-        alert("swipeLeft")
         movebands(bandsnowIndex+1);
     }).on("swipeRight",function(e){
         movebands(bandsnowIndex-1);
