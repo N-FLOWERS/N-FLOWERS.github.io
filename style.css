@@ -80,6 +80,15 @@ p {
 .figurebox {
     margin-bottom: 15px;
 }
+.figurebox1 {
+    height: 6.1rem;
+}
+.figurebox2 {
+    height: 10.3rem;
+}
+.figurebox3 {
+    height: 6.1rem;
+}
 figcaption {
     margin-top: 8px;
     margin-bottom: 8px;
