@@ -59,6 +59,8 @@
     });
 
     function move1(i){
+        alert(3);
+
         nowIndex1 ++;
         if(nowIndex1 >= index1) nowIndex1 = 0;
         if(typeof i == "number") nowIndex1 = (i >= index1) ? 0 : ((i <= -1) ? index1-1 : i);
