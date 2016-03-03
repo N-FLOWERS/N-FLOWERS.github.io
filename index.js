@@ -1,3 +1,14 @@
+!(function(doc, win) {
+    var docEle = doc.documentElement,
+        evt = "onorientationchange" in window ? "orientationchange" : "resize",
+        fn = function() {
+            var width = docEle.clientWidth;
+            width && (docEle.style.fontSize = 100 * (width / 750) + "px");
+        };
+    win.addEventListener(evt, fn, false);
+    doc.addEventListener("DOMContentLoaded", fn, false);
+}(document, window));
+
 !function($){
     
     var $figure1 = $("#figure1");
@@ -31,7 +42,6 @@
     }).on("swipeEnd",function(e){
         timer1 = setInterval(move1,2000);
     }).on("swipeLeft",function(e){
-        alert("swipeLeft");
         move1(nowIndex1+1);
     }).on("swipeRight",function(e){
         move1(nowIndex1-1);
@@ -82,7 +92,8 @@
     var bandsindex = $(".bands li").length;
     var bandsnowIndex = 0;
     var n = 4;
-    $bands.on("swipeLeft",function(e){
+    myTouch4 = util.toucher(document.getElementsByClassName('bands')[0]);
+    myTouch4.on("swipeLeft",function(e){
         movebands(bandsnowIndex+1);
     }).on("swipeRight",function(e){
         movebands(bandsnowIndex-1);
