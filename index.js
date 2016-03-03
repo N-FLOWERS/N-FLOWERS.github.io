@@ -26,40 +26,31 @@
     var timer2 = setInterval(move2,2000);
     var timer3 = setInterval(move3,2000);
     
-    touch.on("#figure1","touchstart",function(e){
+    $figure1.on("touchstart",function(e){
         clearInterval(timer1);
-    })
-    touch.on("#figure1","touchend",function(e){
+    }).on("touchend",function(e){
         timer1 = setInterval(move1,2000);
-    })
-    touch.on("#figure1","swipeleft",function(e){
+    }).on("swipeLeft",function(e){
         move1(nowIndex1+1);
-    })
-    touch.on("#figure1","swiperight",function(e){
+    }).on("swipeRight",function(e){
         move1(nowIndex1-1);
     });
-     touch.on("#figure2","touchstart",function(e){
+    $figure2.on("touchstart",function(e){
         clearInterval(timer2);
-    })
-    touch.on("#figure2","touchend",function(e){
+    }).on("touchend",function(e){
         timer2 = setInterval(move2,2000);
-    })
-    touch.on("#figure2","swipeleft",function(e){
+    }).on("swipeLeft",function(e){
         move2(nowIndex2+1);
-    })
-    touch.on("#figure2","swiperight",function(e){
+    }).on("swipeRight",function(e){
         move2(nowIndex2-1);
     });
-    touch.on("#figure3","touchstart",function(e){
+    $figure3.on("touchstart",function(e){
         clearInterval(timer3);
-    })
-    touch.on("#figure3","touchend",function(e){
+    }).on("touchend",function(e){
         timer3 = setInterval(move3,2000);
-    })
-    touch.on("#figure3","swipeleft",function(e){
+    }).on("swipeLeft",function(e){
         move3(nowIndex3+1);
-    })
-    touch.on("#figure3","swiperight",function(e){
+    }).on("swipeRight",function(e){
         move3(nowIndex3-1);
     });
 
@@ -90,10 +81,9 @@
     var bandsindex = $(".bands li").length;
     var bandsnowIndex = 0;
     var n = 4;
-    touch.on("#bands","swipeleft",function(e){
+        $bands.on("swipeLeft",function(e){
         movebands(bandsnowIndex+1);
-    })
-    touch.on("#bands","swiperight",function(e){
+    }).on("swipeRight",function(e){
         movebands(bandsnowIndex-1);
     });
     
