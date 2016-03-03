@@ -22,30 +22,32 @@
     var timer2 = setInterval(move2,2000);
     var timer3 = setInterval(move3,2000);
 
-    $figure1.on("touchstart",function(e){
+    myTouch1 = util.toucher(document.getElementById('figure1'));
+    myTouch2 = util.toucher(document.getElementById('figure2'));
+    myTouch3 = util.toucher(document.getElementById('figure3'));
+    
+    myTouch1.on("swipeStart",function(e){
         clearInterval(timer1);
-    }).on("touchend",function(e){
+    }).on("swipeEnd",function(e){
         timer1 = setInterval(move1,2000);
     }).on("swipeLeft",function(e){
-        e.preventDefault();
         alert("swipeLeft");
         move1(nowIndex1+1);
     }).on("swipeRight",function(e){
-         e.preventDefault();
         move1(nowIndex1-1);
     });
-    $figure2.on("touchstart",function(e){
+    myTouch2.on("swipeStart",function(e){
         clearInterval(timer2);
-    }).on("touchend",function(e){
+    }).on("swipeEnd",function(e){
         timer2 = setInterval(move2,2000);
     }).on("swipeLeft",function(e){
         move2(nowIndex2+1);
     }).on("swipeRight",function(e){
         move2(nowIndex2-1);
     });
-    $figure3.on("touchstart",function(e){
+    myTouch3.on("swipeStart",function(e){
         clearInterval(timer3);
-    }).on("touchend",function(e){
+    }).on("swipeEnd",function(e){
         timer3 = setInterval(move3,2000);
     }).on("swipeLeft",function(e){
         move3(nowIndex3+1);
