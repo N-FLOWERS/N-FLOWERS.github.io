@@ -15,13 +15,6 @@
     var $figure2 = $("#figure2");
     var $figure3 = $("#figure3");
     
-    $(function(){
-       $figure1.parent(".figurebox").height($figure1.height());
-        $figure2.parent(".figurebox").height($figure2.height());
-        $figure3.parent(".figurebox").height($figure3.height()); 
-    })
-    
-    
     var index1 = $("#figure1 li").length;
     var nowIndex1 = 0;
     var index2 = $("#figure2 li").length;
