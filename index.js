@@ -25,37 +25,41 @@
     var timer1 = setInterval(move1,2000);
     var timer2 = setInterval(move2,2000);
     var timer3 = setInterval(move3,2000);
-
-    myTouch1 = util.toucher(document.getElementById('figure1'));
-    myTouch2 = util.toucher(document.getElementById('figure2'));
-    myTouch3 = util.toucher(document.getElementById('figure3'));
     
-    myTouch1.on("swipeStart",function(e){
+    touch.on("#figure1","touchstart",function(e){
         clearInterval(timer1);
-    }).on("swipeEnd",function(e){
-        alert(3);
+    })
+    touch.on("#figure1","touchend",function(e){
         timer1 = setInterval(move1,2000);
-    }).on("swipeLeft",function(e){
+    })
+    touch.on("#figure1","swipeleft",function(e){
         move1(nowIndex1+1);
-    }).on("swipeRight",function(e){
+    })
+    touch.on("#figure1","swiperight",function(e){
         move1(nowIndex1-1);
     });
-    myTouch2.on("swipeStart",function(e){
+     touch.on("#figure2","touchstart",function(e){
         clearInterval(timer2);
-    }).on("swipeEnd",function(e){
+    })
+    touch.on("#figure2","touchend",function(e){
         timer2 = setInterval(move2,2000);
-    }).on("swipeLeft",function(e){
+    })
+    touch.on("#figure2","swipeleft",function(e){
         move2(nowIndex2+1);
-    }).on("swipeRight",function(e){
+    })
+    touch.on("#figure2","swiperight",function(e){
         move2(nowIndex2-1);
     });
-    myTouch3.on("swipeStart",function(e){
+    touch.on("#figure3","touchstart",function(e){
         clearInterval(timer3);
-    }).on("swipeEnd",function(e){
+    })
+    touch.on("#figure3","touchend",function(e){
         timer3 = setInterval(move3,2000);
-    }).on("swipeLeft",function(e){
+    })
+    touch.on("#figure3","swipeleft",function(e){
         move3(nowIndex3+1);
-    }).on("swipeRight",function(e){
+    })
+    touch.on("#figure3","swiperight",function(e){
         move3(nowIndex3-1);
     });
 
@@ -86,10 +90,10 @@
     var bandsindex = $(".bands li").length;
     var bandsnowIndex = 0;
     var n = 4;
-    myTouch4 = util.toucher(document.getElementsByClassName('bands')[0]);
-    myTouch4.on("swipeLeft",function(e){
+    touch.on("#bands","swipeleft",function(e){
         movebands(bandsnowIndex+1);
-    }).on("swipeRight",function(e){
+    })
+    touch.on("#bands","swiperight",function(e){
         movebands(bandsnowIndex-1);
     });
     
