@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #645647;
+    background-color: #fff;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    padding: 1px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.15);
+}
+.mb-15 {
+    margin-bottom: 15px;
+}
+figure.mb-15 {
+    padding: 1px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.15);
+}
+figure.mb-15 img {
+    padding: 0;
+    border-radius: 0;
+    box-shadow : none;
+}
+figure.mb-15 figcaption {
+    margin-top: 5px;
+}
+article {
+    padding: 25px 15px 15px;
+}
+h1,h3,figcaption {
+    text-align: center;
+}
+h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight: normal;
+}
+p {
+    margin-bottom: 15px;
+}
+.bandsbox {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 10px;
+}
+.bands {
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    width: 200%;
+    -webkit-transition: left ease .3s;
+    transition: left ease .3s;
+}
+.bands li {
+    width: 12.5%;
+    text-align: center;
+    float: left;
+}
+.bands li img {
+    padding: 
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+.figurebox {
+    margin-bottom: 15px;
+}
+figcaption {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.figurebox {
+    position: relative;
+    overflow: hidden;
+}
+#figure1 {
+	position: absolute;
+	left: 0;
+    width: 500%;
+    -webkit-transition: left ease .3s;
+    transition: left ease .3s;
+}
+#figure1 li {
+    width: 20%;
+}
+#figure2 {
+	position: absolute;
+	left: 0;
+    width: 300%;
+    left: 0;
+    -webkit-transition: left ease .3s;
+    transition: left ease .3s;
+}
+#figure2 li {
+    width: 33.33333%;
+}
+#figure3 {
+	position: absolute;
+	left: 0;
+    width: 300%;
+    left: 0;
+    -webkit-transition: left ease .3s;
+    transition: left ease .3s;
+}
+#figure3 li {
+    width: 33.33333%;
+}
+.figurebox ul {
+    overflow: hidden;
+}
+.figurebox li {
+    float: left;
+}
+.slide-bar {
+    position: absolute;
+    bottom: 7px;
+    left: 50%;
+    margin-left: -16px;
+}
+.slide-bar3 {
+	margin-left: -22px;
+}
+.slide-bar li {
+	width: 5px;
+	height: 5px;
+	float: left;
+	margin: 0 3px;
+	border-radius: 50%;
+	background-color: #333;
+}
+.slide-bar li.current {
+	background-color: orange;
+}
+
+/*兔斯基动画*/
+.tusj {
+    overflow: hidden;
+    position: relative;
+    padding: 1px;
+    padding-top: 30px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.15);
+}
+.tusj img {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+}
+#tusj-txt-left {
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    top: 0px;
+    opacity: 0;
+    -webkit-animation: moveleft 4s infinite;
+    animation: moveleft 4s infinite;
+}
+#tusj-txt-right {
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    margin-left: -100px;
+    left: 50%;
+    opacity: 0;
+    top: 0px;
+    -webkit-animation: moveright 4s infinite;
+    animation: moveright 4s infinite;
+}
+@-webkit-keyframes moveleft 
+{
+from {opacity: 0;margin-left: -100px;}
+25% {opacity: 1;margin-left: -50px;}
+50% {opacity: 0;margin-left: -50px;}
+to {opacity: 0;margin-left: -50px;}
+}
+
+@keyframes moveleft
+{
+from {opacity: 0;margin-left: -100px;}
+25% {opacity: 1;margin-left: -50px;}
+50% {opacity: 0;margin-left: -50px;}
+to {opacity: 0;margin-left: -50px;}
+}
+
+@-webkit-keyframes moveright 
+{
+from {opacity: 0;margin-left: -100px;}
+50% {opacity: 0;margin-left: -100px;}
+75% {opacity: 1;margin-left: -50px;}
+to {opacity: 0;margin-left: -50px;}
+}
+
+@keyframes moveright
+{
+from {opacity: 0;margin-left: -100px;}
+50% {opacity: 0;margin-left: -100px;}
+75% {opacity: 1;margin-left: -50px;}
+to {opacity: 0;margin-left: -50px;}
+}
+
+/*水滴动画*/
+.waterbox {
+    position: relative;
+    overflow: hidden;
+}
+.waterdrop {
+    position: absolute;
+    bottom: 55px;
+    left: 15%;
+    width: 20%;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-animation: watermove 1.5s ease-in infinite;
+    animation: watermove 1.5s ease-in infinite;
+}
+
+@-webkit-keyframes watermove {
+    from {bottom:55px;}
+    50% {bottom:-100px;}
+    to {bottom:-100px;}
+}
+@keyframes watermove {
+    from {bottom:55px;}
+    50% {bottom:-100px;}
+    to {bottom:-100px;}
+}
+
+/*我想静静*/
+.jingjing {
+    position: relative;
+}
+.jingjing-line1,.jingjing-line2,.jingjing-line3,.jingjing-line4 {
+    position: absolute;
+    font-size: 20px;
+    left: 15px;
+    opacity: 0;
+}
+.jingjing-line1 {
+    top : 20px;
+    -webkit-animation: jingjingline1 5s ease-in infinite;
+    animation: jingjingline1 5s ease-in infinite;
+}
+.jingjing-line2 {
+    top : 45px;
+    -webkit-animation: jingjingline2 5s ease-in infinite;
+    animation: jingjingline2 5s ease-in infinite;
+}
+.jingjing-line3 {
+    top : 70px;
+    -webkit-animation: jingjingline3 5s ease-in infinite;
+    animation: jingjingline3 5s ease-in infinite;
+}
+.jingjing-line4 {
+    top : 95px;
+    -webkit-animation: jingjingline4 5s ease-in infinite;
+    animation: jingjingline4 5 ease-in infinite;
+}
+@-webkit-keyframes jingjingline1 {
+    from {opacity:0;}
+    20% {opacity:1;}
+    to {opacity:1;}
+}
+@keyframes jingjingline1 {
+    from {opacity:0;}
+    20% {opacity:1;}
+    to {opacity:1;}
+}
+@-webkit-keyframes jingjingline2 {
+    from {opacity:0;}
+    20% {opacity:0;}
+    40% {opacity: 1}
+    to {opacity:1;}
+}
+@keyframes jingjingline2 {
+    from {opacity:0;}
+    20% {opacity:0;}
+    40% {opacity: 1}
+    to {opacity:1;}
+}
+@-webkit-keyframes jingjingline3 {
+    from {opacity:0;}
+    40% {opacity: 0}
+    60% {opacity: 1}
+    to {opacity:1;}
+}@keyframes jingjingline3 {
+    from {opacity:0;}
+    40% {opacity: 0}
+    60% {opacity: 1}
+    to {opacity:1;}
+}
+@-webkit-keyframes jingjingline4 {
+    from {opacity:0;}
+    60% {opacity: 0}
+    80% {opacity: 1}
+    to {opacity:1;}
+}@keyframes jingjingline4 {
+    from {opacity:0;}
+    60% {opacity: 0}
+    80% {opacity: 1}
+    to {opacity:1;}
+}
