@@ -35,29 +35,29 @@
     
     $(document).on("scroll",function(){
         scrTop = $(document.body).scrollTop() || $(document.documentElement).scrollTop();
-        if(scrTop >= h1 - 10 && scrTop <= h1 + $figure1.height() + window.innerHeight && !status1){
+        if(scrTop >= h1 -window.innerHeight && scrTop <= h1 + $figure1.height() && !status1){
             status1 = true;
             clearInterval(timer1)
             timer1 = setInterval(move1,2000);
-        }else if( scrTop< h1 - 10 || scrTop > h1 + $figure1.height() + window.innerHeight){
+        }else if( scrTop< h1 -window.innerHeight || scrTop > h1 + $figure1.height()){
             status1 = false;
             clearInterval(timer1);
         }
         
-        if(scrTop >= h2 - 10 && scrTop <= h2 + $figure2.height() + window.innerHeight && !status2){
+        if(scrTop >= h2 -window.innerHeight && scrTop <= h2 + $figure2.height() && !status2){
             status2 = true;
             clearInterval(timer2)
             timer2 = setInterval(move2,2000);
-        }else if( scrTop< h2 - 10 || scrTop > h2 + $figure2.height() + window.innerHeight){
+        }else if( scrTop< h2 - 10 -window.innerHeight || scrTop > h2 + $figure2.height()){
             status2 = false;
             clearInterval(timer2);
         }
         
-        if(scrTop >= h3 - 10 && scrTop <= h3 + $figure3.height() + window.innerHeight && !status3){
+        if(scrTop >= h3 -window.innerHeight && scrTop <= h3 + $figure3.height() && !status3){
             status3 = true;
             clearInterval(timer3)
             timer3 = setInterval(move3,2000);
-        }else if( scrTop< h3 - 10 || scrTop > h3 + $figure3.height() + window.innerHeight){
+        }else if( scrTop< h3 - 10 -window.innerHeight || scrTop > h3 + $figure3.height()){
             status3 = false;
             clearInterval(timer3);
         }
