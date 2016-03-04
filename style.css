@@ -58,6 +58,30 @@ p {
     overflow: hidden;
     position: relative;
     margin-bottom: 10px;
+    position: relative;
+    height: 67px;
+}
+.bandsbox .arrowleft {
+    display: none;
+    position: absolute;
+    height: 0;
+    border-color: transparent #ddd transparent transparent;
+    border-width: 8px;
+    border-style: solid;
+    left: -8px;
+    top: 50%;
+    margin-top: -10px;
+}
+.bandsbox .arrowright {
+    display: none;
+    position: absolute;
+    height: 0;
+    border-color: transparent transparent transparent #ddd;
+    border-width: 8px;
+    border-style: solid;
+    right: -8px;
+    top: 50%;
+    margin-top: -10px;
 }
 .bands {
     position: absolute;
@@ -73,9 +97,8 @@ p {
     float: left;
 }
 .bands li img {
-    padding: 
-    border: 1px solid #ccc;
-    border-radius: 50%;
+    padding: 0;
+    border: none;
 }
 .figurebox {
     margin-bottom: 15px;
@@ -84,7 +107,7 @@ p {
     height: 6.1rem;
 }
 .figurebox2 {
-    height: 10.3rem;
+    height: 7.7rem;
 }
 .figurebox3 {
     height: 6.1rem;
@@ -228,6 +251,14 @@ to {opacity: 0;margin-left: -50px;}
 .waterbox {
     position: relative;
     overflow: hidden;
+    padding: 1px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.15);
+}
+.waterbox img {
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
 }
 .waterdrop {
     position: absolute;
