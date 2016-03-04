@@ -25,9 +25,9 @@
     var timer1;
     var timer2;
     var timer3;
-    var h1 = $figure1.offset().top +window.innerHeight;
-    var h2 = $figure2.offset().top +window.innerHeight;
-    var h3 = $figure3.offset().top +window.innerHeight;
+    var h1 = $figure1.offset().top;
+    var h2 = $figure2.offset().top;
+    var h3 = $figure3.offset().top;
     var status1 = false;
     var status2 = false;
     var status3 = false;
