@@ -25,16 +25,16 @@
     var timer1;
     var timer2;
     var timer3;
-    var h1 = $figure1.offset().top;
-    var h2 = $figure2.offset().top;
-    var h3 = $figure3.offset().top;
+    var h1 = $figure1.offset().top +window.innerHeight;
+    var h2 = $figure2.offset().top +window.innerHeight;
+    var h3 = $figure3.offset().top +window.innerHeight;
     var status1 = false;
     var status2 = false;
     var status3 = false;
     var scrTop
     
     $(document).on("scroll",function(){
-        scrTop = $(document.body).scrollTop() + window.innerHeight || $(document.documentElement).scrollTop() +window.innerHeight;
+        scrTop = $(document.body).scrollTop() || $(document.documentElement).scrollTop();
         if(scrTop >= h1 - 10 && scrTop <= h1 + $figure1.height() + window.innerHeight && !status1){
             status1 = true;
             clearInterval(timer1)
