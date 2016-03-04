@@ -68,42 +68,48 @@
 
     
     $figure1.on("touchstart",function(e){
-        clearInterval(timer1);
+//        clearInterval(timer1);
     }).on("touchend",function(e){
         alert("touchend")
     }).on("swipeLeft",function(e){
-        move1(nowIndex1+1);
         clearInterval(timer1);
+        move1(nowIndex1+1);
+        
         timer1 = setInterval(move1,2000);
     }).on("swipeRight",function(e){
-        move1(nowIndex1-1);
         clearInterval(timer1);
+        move1(nowIndex1-1);
+        
         timer1 = setInterval(move1,2000);
     });
     $figure2.on("touchstart",function(e){
-        clearInterval(timer2);
+//        clearInterval(timer2);
     }).on("touchend",function(e){
         
     }).on("swipeLeft",function(e){
-        move2(nowIndex2+1);
         clearInterval(timer2);
+        move2(nowIndex2+1);
+        
         timer2 = setInterval(move2,2000);
     }).on("swipeRight",function(e){
-        move2(nowIndex2-1);
         clearInterval(timer2);
+        move2(nowIndex2-1);
+        
         timer2 = setInterval(move2,2000);
     });
     $figure3.on("touchstart",function(e){
-        clearInterval(timer3);
+//        clearInterval(timer3);
     }).on("touchend",function(e){
        
     }).on("swipeLeft",function(e){
-        move3(nowIndex3+1);
          clearInterval(timer3);
+        move3(nowIndex3+1);
+        
         timer3 = setInterval(move3,2000);
     }).on("swipeRight",function(e){
+        clearInterval(timer3);
         move3(nowIndex3-1);
-         clearInterval(timer3);
+         
         timer3 = setInterval(move3,2000);
     });
 
