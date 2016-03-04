@@ -65,7 +65,7 @@ p {
     display: none;
     position: absolute;
     height: 0;
-    border-color: transparent #ddd transparent transparent;
+    border-color: transparent #eee transparent transparent;
     border-width: 8px;
     border-style: solid;
     left: -8px;
@@ -76,7 +76,7 @@ p {
     display: none;
     position: absolute;
     height: 0;
-    border-color: transparent transparent transparent #ddd;
+    border-color: transparent transparent transparent #eee;
     border-width: 8px;
     border-style: solid;
     right: -8px;

@@ -31,9 +31,10 @@
     var status1 = false;
     var status2 = false;
     var status3 = false;
+    var scrTop
     
     $(document).on("scroll",function(){
-        var scrTop = $(document.body).scrollTop() + window.innerHeight || $(document.documentElement).scrollTop() +window.innerHeight;
+        scrTop = $(document.body).scrollTop() + window.innerHeight || $(document.documentElement).scrollTop() +window.innerHeight;
         if(scrTop >= h1 - 10 && scrTop <= h1 + $figure1.height() + window.innerHeight && !status1){
             status1 = true;
             clearInterval(timer1)
@@ -96,6 +97,7 @@
 
     function move1(i){
         console.log(1)
+        alert(1 + 'sctop:' +scrTop +'$figure1.top:' +h1+'fheight:'+$figure1.height())
         nowIndex1 ++;
         if(nowIndex1 >= index1) nowIndex1 = 0;
         if(typeof i == "number") nowIndex1 = (i >= index1) ? 0 : ((i <= -1) ? index1-1 : i);
