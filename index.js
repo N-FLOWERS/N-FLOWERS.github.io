@@ -34,6 +34,9 @@
     var scrTop
     
     $(document).on("scroll",function(){
+        h1 = $figure1.offset().top;
+        h2 = $figure2.offset().top;
+        h3 = $figure3.offset().top;
         scrTop = $(document.body).scrollTop() || $(document.documentElement).scrollTop();
         if(scrTop >= h1 -window.innerHeight && scrTop <= h1 + $figure1.height() && !status1){
             status1 = true;
