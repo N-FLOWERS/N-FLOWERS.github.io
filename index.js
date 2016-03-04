@@ -31,7 +31,7 @@
     var status1 = false;
     var status2 = false;
     var status3 = false;
-    var scrTop
+    var scrTop;
     
     $(document).on("scroll",function(){
         h1 = $figure1.offset().top;
@@ -66,56 +66,35 @@
         }
     })
 
-    
-    $figure1.on("touchstart",function(e){
-//        clearInterval(timer1);
-    }).on("touchend",function(e){
-        alert("touchend")
-    }).on("swipeLeft",function(e){
+    $figure1.on("swipeLeft",function(e){
         clearInterval(timer1);
         move1(nowIndex1+1);
-        
         timer1 = setInterval(move1,2000);
     }).on("swipeRight",function(e){
         clearInterval(timer1);
         move1(nowIndex1-1);
-        
         timer1 = setInterval(move1,2000);
     });
-    $figure2.on("touchstart",function(e){
-//        clearInterval(timer2);
-    }).on("touchend",function(e){
-        
-    }).on("swipeLeft",function(e){
+    $figure2.on("swipeLeft",function(e){
         clearInterval(timer2);
         move2(nowIndex2+1);
-        
         timer2 = setInterval(move2,2000);
     }).on("swipeRight",function(e){
         clearInterval(timer2);
         move2(nowIndex2-1);
-        
         timer2 = setInterval(move2,2000);
     });
-    $figure3.on("touchstart",function(e){
-//        clearInterval(timer3);
-    }).on("touchend",function(e){
-       
-    }).on("swipeLeft",function(e){
-         clearInterval(timer3);
+    $figure3.on("swipeLeft",function(e){
+        clearInterval(timer3);
         move3(nowIndex3+1);
-        
         timer3 = setInterval(move3,2000);
     }).on("swipeRight",function(e){
         clearInterval(timer3);
         move3(nowIndex3-1);
-         
         timer3 = setInterval(move3,2000);
     });
 
     function move1(i){
-        console.log(1)
-        alert(1 + 'sctop:' +scrTop +'$figure1.top:' +h1+','+$figure1.offset().top+'fheight:'+$figure1.height()+'innerh:'+window.innerHeight+"odcustop:"+($(document.body).scrollTop()||$(document.documentElement).scrollTop()))
         nowIndex1 ++;
         if(nowIndex1 >= index1) nowIndex1 = 0;
         if(typeof i == "number") nowIndex1 = (i >= index1) ? 0 : ((i <= -1) ? index1-1 : i);
@@ -123,8 +102,6 @@
         $(".slide-bar1 li").removeClass("current").eq(nowIndex1).addClass("current");
     }
     function move2(i){
-        alert(2 + 'sctop:' +scrTop +'$figure2.top:' +h2+','+$figure2.offset().top+'fheight:'+$figure2.height()+'innerh:'+window.innerHeight+"odcustop:"+($(document.body).scrollTop()||$(document.documentElement).scrollTop()))
-        console.log(2)
         nowIndex2 ++;
         if(nowIndex2 >= index2) nowIndex2 = 0;
         if(typeof i == "number") nowIndex2 = (i >= index2) ? 0 : ((i <= -1) ? index2-1 : i);
@@ -132,15 +109,12 @@
         $(".slide-bar2 li").removeClass("current").eq(nowIndex2).addClass("current");
     }
     function move3(i){
-        alert(3 + 'sctop:' +scrTop +'$figure3.top:' +h3+','+$figure3.offset().top+'fheight:'+$figure3.height()+'innerh:'+window.innerHeight+"odcustop:"+($(document.body).scrollTop()||$(document.documentElement).scrollTop()))
-        console.log(3)
         nowIndex3 ++;
         if(nowIndex3 >= index3) nowIndex3 = 0;
         if(typeof i == "number") nowIndex3 = (i >= index3) ? 0 : ((i <= -1) ? index3-1 : i);
         $figure3.css("left",-nowIndex3 * 100 +"%");
         $(".slide-bar3 li").removeClass("current").eq(nowIndex3).addClass("current");
     }
-    
     
     var $bands = $(".bands");
     var bandsindex = $(".bands li").length;
@@ -181,7 +155,6 @@
             bandsnowIndex = 0;
             return;
         }
-        
         
         $bands.css("left",-bandsnowIndex * 200/bandsindex +"%");
     }
