@@ -105,6 +105,7 @@
         $(".slide-bar1 li").removeClass("current").eq(nowIndex1).addClass("current");
     }
     function move2(i){
+        alert(2 + 'sctop:' +scrTop +'$figure2.top:' +h2+'fheight:'+$figure2.height())
         console.log(2)
         nowIndex2 ++;
         if(nowIndex2 >= index2) nowIndex2 = 0;
@@ -113,6 +114,7 @@
         $(".slide-bar2 li").removeClass("current").eq(nowIndex2).addClass("current");
     }
     function move3(i){
+        alert(3 + 'sctop:' +scrTop +'$figure3.top:' +h3+'fheight:'+$figure3.height())
         console.log(3)
         nowIndex3 ++;
         if(nowIndex3 >= index3) nowIndex3 = 0;
