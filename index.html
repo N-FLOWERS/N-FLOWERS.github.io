@@ -19,6 +19,7 @@
 			background: url(images/stage_bg.jpg) no-repeat center;
 			background-size: cover;
 			font-size: 0;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
 		}
 		.beat-egg-container {
 		    position: fixed;
@@ -38,6 +39,15 @@
 		    overflow: hidden;
 			text-align: center;
 		}
+		#back-btn {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 20%;
+			height: 40px;
+			background: url(images/goback.png) no-repeat center;
+			background-size: 100%;
+		}
 		.hidden {
 			display: none;
 		}
@@ -48,6 +58,7 @@
 	<div class="beat-egg-container">
         <a href="javascript:;" class="beat-egg" id="beat-egg-btn"></a>
     </div>
+    <a href="" id="back-btn" class="hidden"></a>
 	
 	<script type="text/javascript" src="util.js"></script>
 	<script type="text/javascript" src="egg.js"></script>

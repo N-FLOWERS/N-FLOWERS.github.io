@@ -1,26 +1,39 @@
+/*
+    点击开始砸蛋时提交ajax，获取结果信息，返回
+    {
+        code : "0",
+        data : {
+            name : "礼品名称或空蛋什么"，
+            url : "礼品图片地址"，
+            success : 0, 0即有礼品，非0无礼品            
+        }
+    }
+    在礼品图片加载完成后开始砸蛋动画
+    ajax函数在下方render函数内
+*/
+
+var url = "./return.json";   //请求地址
 var canvas = document.getElementById('canvas');
 var width = canvas.width = window.innerWidth;
 var height = canvas.height = window.innerHeight;
 
 var ctx = canvas.getContext('2d');
 var game, stage;
-var prize = { name: '数码相机', img: 'images/prize1.jpg', success: true};
+// var prize = { name: '数码相机', url: 'images/prize1.jpg', success: 0};
 var egg, prizes = [], beat;
 var eggI;
 
 var Resource = {
     "egg": { name: "舞台金蛋", url: "images/egg.png",width:width/2},
     "egg2_2": { name: "金蛋碎开背景", url: "images/egg2_2.png",width:width/2},
-    "start": { name: "开始菜单", url: "images/start.png"},
     "coin": { name: "金币", url: "images/coin.png",width:width*2/3},
     "stage_bg": { name: "舞台背景", url: "images/stage_bg.jpg"},
     "gash": { name: "裂纹", url: "images/gash.png",width:width*0.35},
     "gift": { name: "礼品", url: "images/gift.png",width:width*0.43},
     "beat": { name: "锤子", url: "images/beat.png",width:width*0.3},
-    "unprize": { name: '无奖', url: "images/unprize.jpg",width:width*0.3},
-    "prize1": {name: '数码相机', url: 'images/prize1.jpg',width:width*0.3,success:true},
     "gs2": { name: "光束2", url: "images/gs2.png",width:width*0.7},
 };
+
 
 
 // 资源统计
@@ -52,7 +65,7 @@ for ( var i in Resource ) {
                 }
                 // 资源加载完成，开始游戏
                 game = new Game( canvas );
-                game.createGameScene( prize );
+                game.createGameScene();
            }
        }
     }
@@ -79,8 +92,8 @@ function Game( canvas ) {
     this.cw = window.innerWidth;
     this.ch = window.innerHeight;
 
-    this.createGameScene = function( prize ) {
-        this.prize = prize;
+    this.createGameScene = function() {
+        // this.prize = prize;
         this.start();
     };
 
@@ -88,15 +101,46 @@ function Game( canvas ) {
         render();
     };
 
-    // 页面DOM渲染
+    // 点击砸蛋时发送ajax
     function render() {
-
 		eggI = 1;
         var btn = document.getElementById("beat-egg-btn");
         openCanvas();
         btn.onclick = function( e ){
-            btn.className = "hidden";
-            beatEgg();
+            var that = this;
+            var xmlhttp = new XMLHttpRequest() || new ActiveXObject("Microsoft.XMLHTTP");
+            var postdata = {};
+            xmlhttp.open("POST",url,true);
+            xmlhttp.onreadystatechange = function(){
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    var o = JSON.parse(xmlhttp.responseText);
+                    if(o && o.code == '0'){
+                        that.onclick = null;
+                        Resource["prize1"] = {
+                            name: o.data.name,
+                            url: o.data.url,
+                            width:width*0.3,
+                            success: o.data.success==0?true:false
+                        }
+                        Resource["prize1"]['image'] = new Image();
+                        Resource["prize1"]['image'].src = Resource["prize1"]['url'];
+                        Resource["prize1"]['image'].onload = function( ) {
+                            if ( Resource["prize1"]['width'] ) {
+                                Resource["prize1"]['height'] = Resource["prize1"]['width'] / Resource["prize1"]['image']['width'] * Resource["prize1"]['image']['height'];
+                            }
+                            if ( Resource["prize1"]['height'] ) {
+                                Resource["prize1"]['width'] = Resource["prize1"]['height'] / Resource["prize1"]['image']['height'] * Resource["prize1"]['image']['width'];
+                            }
+                            btn.className = "hidden";
+                            beatEgg();
+                        }
+                    }else {
+                        alert("抽了一下~");
+                    }
+                }
+            }
+           xmlhttp.send(JSON.stringify(postdata));
+            
         };
     }
 
@@ -138,33 +182,12 @@ function Game( canvas ) {
             if ( egg['status']==2 ) {
                 // 显示礼品
                 if ( !prizes.length ) {
-                    console.log(1)
                     var prizeRes = getRes('prize'+ eggI);
                     var x = ( _this.stageW - prizeRes['width']) / 2;
                     var y = ( _this.stageH - prizeRes['height']) * 3 / 7 + 60;
                     prizes.push(new Prize( _this.ctx, x, y ));
-
-                    // // 礼品出现后，打开“关闭”按钮，并显示出页面上金蛋对应的礼品
-                    // $('#close-btn').removeClass('hidden');
-                    // var prizeObj = getRes('prize'+ eggI );
-                    // boxs.eq( eggI ).parent().addClass('complete').end().removeClass('doing').css('opacity', 1).find('img').attr('src', prizeObj['url']);
-                    // if ( !prizeRes['success'] ) {
-                    //     boxs.eq( eggI ).parent().addClass('fail');
-                    // }
-                    // prizeGroup[ eggI ]['complete'] = true;
-                    // prizeObj = null;
-
-                    // 请求发送
-                    /*var url = "";
-                    var data = {};
-                    $.ajax({
-                        type: 'POST',
-                        url: url,
-                        data: data,
-                        success: function( data ) {
-
-                        }
-                    });*/
+                    var backBtn = document.getElementById("back-btn");
+                    backBtn.className = backBtn.className.replace(/\s*hidden\s*/,"");
                 }
             }
         }
